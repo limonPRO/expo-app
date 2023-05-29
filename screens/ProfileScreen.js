@@ -17,7 +17,7 @@ export default function ({ navigation }) {
         <Button
           // style={{ Ba }}
           title="Data fetching"
-          onPress={() => navigation.navigate("Product")}
+          onPress={() => navigation.navigate("Products")}
         ></Button>
       </View>
     </SafeAreaView>
