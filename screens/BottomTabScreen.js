@@ -1,6 +1,6 @@
 import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 
-export default function (){
+export default function ({navigation}){
     return(
         <SafeAreaView style={{flex:1 , justifyContent:'center',alignItems:'center'}}>
                 <View>
@@ -13,7 +13,9 @@ export default function (){
                     alignItems:"center",
                     alignContent:"center",
                     backgroundColor:'#f56887'
-                }}>
+                }}
+                 onPress={()=> navigation.navigate('Top Tab')}
+                >
                     <Text style={{textAlign:'center',color:'white',fontSize:20}}>got to top tab</Text>
                 </TouchableOpacity>
         </SafeAreaView>

@@ -30,6 +30,7 @@ export default function App() {
       />
       <Stack.Screen name="Profile" component={ProfileScreen} />
       <Stack.Screen name="Bottom Tab" component={MyTabs} options={{ headerShown: false }}/>
+      <Stack.Screen name="Top Tab" component={MyTopTabs} options={{ headerShown: true }}/>
     </Stack.Navigator>
   </NavigationContainer>
   );
@@ -54,5 +55,19 @@ function MyTabs() {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Bottom tab" component={BottomTabScreen} />
     </Tab.Navigator>
+  );
+}
+
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import TopTabScreen from './screens/TopTabScreen';
+
+const topTab = createMaterialTopTabNavigator();
+
+function MyTopTabs() {
+  return (
+    <topTab.Navigator>
+      <topTab.Screen name="Home" component={HomeScreen} />
+      <topTab.Screen name="Settings" component={TopTabScreen} />
+    </topTab.Navigator>
   );
 }
