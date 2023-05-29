@@ -1,12 +1,37 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import HomeScreen from './screens/HomeScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import ProfileScreen from './screens/ProfileScreen';
+
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import BottomTabScreen from './screens/BottomTabScreen';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+    <Stack.Navigator>
+    <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          headerTitle: () => <Button title='you are in home'/>,
+          headerRight: () => (
+            <Button
+              onPress={() => alert('This is a button!')}
+              title="Info"
+              // color="#fff"
+            />
+          ),
+        }}
+      />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen name="Bottom Tab" component={MyTabs} options={{ headerShown: false }}/>
+    </Stack.Navigator>
+  </NavigationContainer>
   );
 }
 
@@ -18,3 +43,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+
+
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Bottom tab" component={BottomTabScreen} />
+    </Tab.Navigator>
+  );
+}
